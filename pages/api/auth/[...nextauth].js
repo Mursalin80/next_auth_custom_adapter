@@ -2,10 +2,10 @@ import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
-import Adapter from '../../../lib/adapter';
+import MongooseAdapter from '../../../lib/adapter';
 
 export default NextAuth({
-  adapter: Adapter(),
+  adapter: MongooseAdapter(),
   providers: [
     // OAuth authentication providers...
     GithubProvider({
