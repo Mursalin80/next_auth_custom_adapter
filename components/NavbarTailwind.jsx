@@ -46,18 +46,16 @@ export default function Example() {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   />
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {session ? null : (
+                  {session ? null : (
+                    <div className=" hover:bg-gray-400 hover:text-white m-3 p-2 text-sm bg-gray-600 font-bold rounded-full">
                       <button
                         onClick={() => signIn()}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="text-white  rounded-md text-sm "
                       >
                         Login
                       </button>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -74,11 +72,11 @@ export default function Example() {
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
-                      {
+                      {session ? (
                         <div className="text-gray-300 hover:bg-blue-200 hover:text-white px-3 py-2 text-sm bg-slate-700 font-bold rounded-full">
                           {session?.user.name.slice(0, 2).toUpperCase()}
                         </div>
-                      }
+                      ) : null}
                     </Menu.Button>
                   </div>
                   <div>
