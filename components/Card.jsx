@@ -9,19 +9,26 @@ const Card = () => {
 
   if (status === 'loading') {
     return (
-      <DoubleBubble
-        text={'Loading...'}
-        bgColor={'#F0A500'}
-        center={false}
-        width={'300px'}
-        height={'300px'}
-      />
+      <div className="bg-gray-300 border-4 border-cyan-300 p-4  rounded-xl">
+        <DoubleBubble
+          text={'Loading...'}
+          center={false}
+          width={'500px'}
+          height={'300px'}
+        />
+      </div>
     );
   }
   if (status !== 'authenticated') {
     return null;
   }
-  return <div>{JSON.stringify(data.user, null, 2)}</div>;
+  return (
+    <div className="container mx-auto w-9/12">
+      <div className="bg-gray-300 border-4 border-cyan-300 p-4  rounded-xl">
+        <pre>{JSON.stringify(data.user, null, 2)}</pre>
+      </div>
+    </div>
+  );
 };
 
 export default Card;
