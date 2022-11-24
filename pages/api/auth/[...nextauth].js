@@ -58,6 +58,12 @@ export default NextAuth({
     }),
   ],
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return true;
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
+    },
     // async jwt(data) {
     //   // Persist the OAuth access_token to the token right after signin
     //   console.log('JWT:data ', data);
@@ -74,6 +80,13 @@ export default NextAuth({
     //   session.accessToken = token.accessToken;
     //   return session;
     // },
+  },
+  pages: {
+    signIn: '/signin',
+    // signOut: '/auth/signout',
+    // error: '/auth/error', // Error code passed in query string as ?error=
+    // verifyRequest: '/auth/verify-request', // (used for check email message)
+    // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
   },
   theme: {
     colorScheme: 'dark', // "auto" | "dark" | "light"
