@@ -1,12 +1,9 @@
 import Head from 'next/head';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import NavbarTailwind from '../components/NavbarTailwind';
+import Navbar from '../components/Navbar';
 import styles from '../styles/Home.module.css';
 import Card from '../components/Card';
 
 export default function Home() {
-  const { data: session } = useSession();
-
   return (
     <div className={styles.container}>
       <Head>
@@ -15,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="sticky top-0">
-        <NavbarTailwind />
+        <Navbar />
       </div>
 
       <main className={styles.main}>

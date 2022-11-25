@@ -4,7 +4,7 @@ import { BarLoader } from 'react-spinner-animated';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import NavbarTailwind from '../components/NavbarTailwind';
+import Navbar from '../components/Navbar';
 
 import 'react-spinner-animated/dist/index.css';
 
@@ -31,7 +31,7 @@ const Profile = () => {
   return (
     <div>
       <div className="sticky top-0">
-        <NavbarTailwind />
+        <Navbar />
       </div>
       <div className="container mx-auto w-9/12 mt-3">
         <div className="bg-gray-300 border-4 border-cyan-300 p-4  rounded-xl">
