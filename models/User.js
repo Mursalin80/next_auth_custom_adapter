@@ -3,6 +3,7 @@ import mongoose, { model, models, Schema } from 'mongoose';
 let UserSchema = new Schema(
   {
     name: String,
+    password: String,
     emailVerified: Date,
     email: {
       type: String,

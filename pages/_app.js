@@ -1,6 +1,8 @@
-import '../styles/globals.css';
-
+import { ToastContainer } from 'react-toastify';
 import { SessionProvider } from 'next-auth/react';
+
+import '../styles/globals.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({
   Component,
@@ -8,7 +10,21 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <>
+        <Component {...pageProps} />
+        <ToastContainer
+          position="top-left"
+          autoClose={6000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+      </>
     </SessionProvider>
   );
 }

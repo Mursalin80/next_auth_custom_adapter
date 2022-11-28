@@ -6,7 +6,7 @@ const login = ({ csrfToken, providers }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   return (
-    <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 w-1/4 h-full">
+    <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8  h-full sm:w-full">
       <div className="w-full max-w-md space-y-8 bg-slate-300 m-2 p-4 rounded-lg ">
         <div>
           <Image
@@ -28,12 +28,12 @@ const login = ({ csrfToken, providers }) => {
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
-              <label htmlFor="email-address" className="sr-only">
+              <label htmlFor="email-login" className="sr-only">
                 Email address
               </label>
               <input
                 ref={emailRef}
-                id="email-address"
+                id="email-login"
                 name="email"
                 type="email"
                 autoComplete="email"
@@ -43,12 +43,12 @@ const login = ({ csrfToken, providers }) => {
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">
+              <label htmlFor="passwordLogin" className="sr-only">
                 Password
               </label>
               <input
                 ref={passwordRef}
-                id="password"
+                id="passwordLogin"
                 name="password"
                 type="password"
                 autoComplete="current-password"

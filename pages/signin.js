@@ -8,7 +8,7 @@ const signin = ({ csrfToken, providers }) => {
   return (
     <div>
       <Navbar />
-      <div className="flex justify-center ">
+      <div className="flex justify-center md:flex-row flex-col ">
         <Login csrfToken={csrfToken} providers={providers} />
         <SignUp csrfToken={csrfToken} />
       </div>
