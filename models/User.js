@@ -11,6 +11,7 @@ let UserSchema = new Schema(
       unique: true,
     },
     image: String,
+    username: String,
     session: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Session',

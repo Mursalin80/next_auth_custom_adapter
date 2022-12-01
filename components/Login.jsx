@@ -5,6 +5,14 @@ import Image from 'next/image';
 const login = ({ csrfToken, providers }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+    signIn('credentials', {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
+  };
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8  h-full sm:w-full">
       <div className="w-full max-w-md space-y-8 bg-slate-300 m-2 p-4 rounded-lg ">
@@ -20,11 +28,7 @@ const login = ({ csrfToken, providers }) => {
             Sign in to your account
           </h2>
         </div>
-        <form
-          className="mt-8 space-y-6"
-          method="post"
-          // action="/api/auth/callback/credentials"
-        >
+        <form className="mt-8 space-y-6" onSubmit={(e) => handleSubmit(e)}>
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
@@ -61,13 +65,7 @@ const login = ({ csrfToken, providers }) => {
 
           <div>
             <button
-              // type="submit"
-              onClick={() =>
-                signIn('credentials', {
-                  email: emailRef.current.value,
-                  password: passwordRef.current.value,
-                })
-              }
+              type="submit"
               className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               Sign in

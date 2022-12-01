@@ -22,30 +22,45 @@ export default NextAuth({
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
       name: 'Credentials',
-
+      credentials: {},
       async authorize(credentials, req) {
-        let user = await User.findOne({ email: credentials.email });
+        const user = await User.findOne({ email: credentials.email });
         if (!user) return null;
         let valid = await verifyPassword(credentials.password, user.password);
         if (!valid) return null;
+
         return {
+          id: user.id,
           name: user.name,
           email: user.email,
-          id: user.id,
+          image: user.image,
+          username: user.username,
         };
       },
     }),
   ],
+  debug: process.env.NODE_ENV === 'development',
+  session: {
+    // Set to jwt in order to CredentialsProvider works properly
+    strategy: 'jwt',
+  },
+  secret: 'test@helloworld',
+  // callback
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      return { user, account, profile, email, credentials };
-    },
     async redirect({ url, baseUrl }) {
       return baseUrl;
     },
+    jwt: async ({ token, user, account, profile, isNewUser }) => {
+      if (typeof user !== typeof undefined) token.user = user;
+
+      return token;
+    },
+    session: async ({ session, user, token }) => {
+      token?.user && (session.user = token.user);
+
+      return session;
+    },
   },
-  secret: 'test@helloworld',
-  jwt: true,
   pages: {
     signIn: '/signin',
   },
